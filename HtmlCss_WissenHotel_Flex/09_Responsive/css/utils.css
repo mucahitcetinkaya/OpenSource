@@ -1,0 +1,235 @@
+/* Renk tanımları */
+:root {
+    --white: #FFF;
+    --primary: #007BFF;
+    --secondary: #6C757D;
+    --success: #28A745;
+    --danger: #DC3545;
+    --warning: #FFC107;
+    --info: #17A2B8;
+    --dark: #343A40;
+    --light: #F8F9FA;
+}
+
+/* text color */
+.text-white {
+    color: var(--white)
+}
+
+.text-primary {
+    color: var(--primary)
+}
+
+.text-secondary {
+    color: var(--secondary)
+}
+
+.text-success {
+    color: var(--success)
+}
+
+.text-danger {
+    color: var(--danger)
+}
+
+.text-warning {
+    color: var(--warning)
+}
+
+.text-info {
+    color: var(--info)
+}
+
+.text-dark {
+    color: var(--dark)
+}
+
+.text-light {
+    color: var(--light)
+}
+
+/* bg-color */
+.bg-white {
+    background-color: var(--white)
+}
+
+.bg-primary {
+    background-color: var(--primary)
+}
+
+.bg-secondary {
+    background-color: var(--secondary)
+}
+
+.bg-success {
+    background-color: var(--success)
+}
+
+.bg-danger {
+    background-color: var(--danger)
+}
+
+.bg-warning {
+    background-color: var(--warning)
+}
+
+.bg-info {
+    background-color: var(--info)
+}
+
+.bg-dark {
+    background-color: var(--dark)
+}
+
+.bg-light {
+    background-color: var(--light)
+}
+
+/* buttons */
+.btn {
+    cursor: pointer;
+    display: inline-block;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: .5rem;
+}
+
+.btn:hover {
+    opacity: .9;
+}
+
+.btn-primary {
+    color: var(--white);
+    background-color: var(--primary);
+}
+
+.btn-secondary {
+    color: var(--white);
+    background-color: var(--secondary);
+}
+
+.btn-success {
+    color: var(--white);
+    background-color: var(--success);
+}
+
+.btn-danger {
+    color: var(--white);
+    background-color: var(--danger);
+}
+
+.btn-warning {
+    color: var(--white);
+    background-color: var(--warning);
+}
+
+.btn-dark {
+    color: var(--white);
+    background-color: var(--dark);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--white);
+    color: var(--white);
+}
+
+.flex-items {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+
+}
+
+.flex-items>div {
+    padding: 2rem;
+
+}
+
+.flex-columns .row {
+    display: flex;
+    width: 100%;
+}
+
+/* .flex-columns .column {
+    width: 50%;
+} */
+
+.flex-columns .column .column-1,
+.flex-columns .column .column-2 {
+    height: 100%;
+}
+
+.flex-columns img {
+    height: 100%;
+}
+
+.flex-columns .column-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.flex-columns .column h2 {
+    color: var(--white);
+    font-size: 4rem;
+}
+
+.flex-columns .column p {
+    color: var(--white);
+}
+
+.flex-reverse {
+    flex-direction: row-reverse;
+}
+
+.flex-grid .row {
+    display: flex;
+    padding: 2rem;
+}
+
+.flex-grid .column {
+    padding: .5rem;
+}
+
+.section-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 3rem .5rem;
+}
+
+.section-header h2 {
+    font-size: 4.8rem;
+}
+
+.rooms .flex-items {
+    padding: 2rem;
+}
+
+@media(max-width: 768px) {
+    .flex-items {
+        flex-direction: column;
+    }
+
+    .teams img {
+        width: 70%;
+    }
+
+    .flex-grid .row {
+        flex-direction: column;
+    }
+
+    .flex-grid .row img {
+        width: 50%;
+    }
+
+    .flex-grid .column {
+        width: 100%;
+    }
+
+}
