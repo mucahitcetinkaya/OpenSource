@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Poppins, 'sans-serif';
+    font-weight: 200;
+    font-size: 20px;
+}
+
+button {
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: .8;
+}
+
+#container {
+    text-align: center;
+    margin: 20px 0;
+    width: 60%;
+    margin: 0 auto;
+}
+
+#header {
+    padding: 15px 0;
+}
+
+#header h1 {
+    color: tomato;
+    font-weight: 400;
+    font-size: 40px;
+}
+
+#input-task {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+#input-new-task {
+    width: calc(100% - 60px);
+    font-size: inherit;
+    padding: 5px 8px;
+    border: 1px solid rgba(128, 128, 128, .5);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#input-new-task:focus {
+    outline: none;
+}
+
+#btn-new-task {
+    width: 60px;
+    background-color: green;
+    color: white;
+
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#task-list {
+    list-style-type: none;
+
+}
+
+.task-container {
+    margin: 10px 0;
+    padding-left: 5px;
+    display: flex;
+    justify-content: space-between;
+    height: 30px;
+}
+
+.task-container div {
+    display: flex;
+}
+
+.task-header {
+    width: 87%;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+    width: 13%;
+}
+
+.task-check {
+    color: blue;
+    zoom: 1.2;
+}
+
+.task-name {
+    margin-left: 5px;
+    width: 96%;
+    padding-left: 5px;
+}
+
+.task-name:disabled {
+    background-color: rgb(231, 248, 222);
+    border: 1px solid rgba(128, 128, 128, .5);
+    color: rgba(0, 0, 0, .8);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.btn-delete {
+    background-color: tomato;
+    color: white;
+}
+
+.btn-edit {
+    background-color: orange;
+    color: white;
+}
+
+#btn-clear {
+    width: 100%;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: tomato;
+    color: white;
+}
+
+.alert {
+    background-color: rgba(255, 165, 0, .6);
+    color: white;
+    font-weight: 400;
+    padding: 10px;
+}
+
+.checked {
+    text-decoration: line-through;
+    background-color: rgba(107, 142, 35, .5) !important;
+    color: rgb(61, 4, 167) !important;
+}
+
+.clicked-button{
+    background-color: blue;
+    color: white;
+}
