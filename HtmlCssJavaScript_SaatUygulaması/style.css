@@ -1,0 +1,16 @@
+body{
+    background-color: rgba(186,191,190, .3);
+    margin-top: 50px;
+}
+
+.clock{
+    text-align: center;
+    font-size: 60px;
+    font-family:'Courier New', Courier, monospace;
+
+}
+span{
+    padding: 20px;
+    background-color: yellowgreen;
+    border-radius: 5px;
+}
