@@ -1,0 +1,16 @@
+﻿@model List<MiniShopApp.Entity.Concrete.Product>
+<div class="row">
+    <div class="col-md-2">
+        @await Component.InvokeAsync("Categories")
+    </div>
+    <div class="col-md-10">
+        <div class="row g-4">
+            @foreach (var product in Model)
+            {
+                <div class="col-md-3">
+                    @await Html.PartialAsync("_ProductPartial",product)
+                </div>
+            }
+        </div>
+    </div>
+</div>

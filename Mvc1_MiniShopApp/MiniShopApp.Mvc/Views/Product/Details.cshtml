@@ -1,0 +1,24 @@
+@model ProductViewModel
+<div class="card mb-3" style="max-width: 800px;">
+    <div class="row g-0">
+        <div class="col-md-2 p-3 ps-4">
+            <img src="~/images/products/@Model.ImageUrl" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-4">
+            <div class="card-body ps-1">
+                <h5 class="card-title">@Model.Name</h5>
+                <p class="card-text">@Model.Properties</p>
+                <p>@($"{Model.Price:C0}")</p>
+                <p class="card-text"><small class="text-body-secondary">@Model.ModifiedDate.ToShortDateString()
+                        tarihinde güncellendi.</small></p>
+            </div>
+        </div>
+        <div class="col-md-3 text-center">
+            <div class="p-4">
+                <button class="btn btn-danger mb-2">Favorilere Ekle</button>
+                <button class="btn btn-success">Sepete Ekle</button>
+
+            </div>
+        </div>
+    </div>
+</div>

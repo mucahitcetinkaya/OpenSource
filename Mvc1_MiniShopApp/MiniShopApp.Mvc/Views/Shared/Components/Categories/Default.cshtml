@@ -1,0 +1,13 @@
+@model List<MiniShopApp.Entity.Concrete.Category>
+
+<div class="list-group">
+    <a asp-area="" asp-controller="Product" asp-action="Index" asp-route-categoryUrl=""
+        class="list-group-item list-group-item-action @(ViewBag.SelectedCategory==null ? "active" : "")">
+        Tümü
+    </a>
+    @foreach (var category in Model)
+    {
+        <a asp-area="" asp-controller="Product" asp-action="Index" asp-route-categoryUrl="@category.Url"
+            class="list-group-item list-group-item-action @(ViewBag.SelectedCategory==category.Url ? "active" : "")">@category.Name</a>
+    }
+</div>

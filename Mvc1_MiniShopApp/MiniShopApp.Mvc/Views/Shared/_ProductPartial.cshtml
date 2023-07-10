@@ -1,0 +1,14 @@
+@model MiniShopApp.Entity.Concrete.Product
+@{
+    var product = Model;
+}
+<div class="card">
+    <img src="~/images/products/@product.ImageUrl" class="card-img-top m-auto mt-2 product-img" alt="...">
+    <div class="card-body">
+        <h5 class="card-title fs-6">@product.Name</h5>
+        <p class="card-text fs-6">@product.Price</p>
+        <a asp-area="" asp-controller="Product" asp-action="Details" asp-route-url="@product.Url"
+            class="btn btn-primary">İncele</a>
+        <a href="#" class="btn btn-success">Sepete Ekle</a>
+    </div>
+</div>
