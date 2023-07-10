@@ -1,0 +1,83 @@
+﻿@model PublisherEditViewModel
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow-lg border-0 rounded-lg mt-3">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col">
+                        <h3 class="font-weight-light mb-2">Yayınevi Güncelleme</h3>
+                    </div>
+                    <div class="col text-end">
+                        <span>
+                            <a asp-area="Admin" asp-controller="Publisher" asp-action="Index"
+                               class="btn btn-link">Vazgeç</a>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-body">
+                <form asp-area="Admin" asp-controller="Publisher" asp-action="Edit" method="post">
+                    <input type="hidden" asp-for="Id" />
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4">
+                            <div class="form-floating mb-2 mb-md-0">
+                                <input asp-for="Name" class="form-control"
+                                       placeholder="Yayınevi adını giriniz.." />
+                                <label asp-for="Name"></label>
+                            </div>
+                            <span class="text-danger" asp-validation-for="Name"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating mb-2 mb-md-0">
+                                <input asp-for="Phone" class="form-control" placeholder="Yayınevi telefon numarasını giriniz.." />
+                                <label asp-for="Phone"></label>
+                            </div>
+                            <span class="text-danger" asp-validation-for="Phone"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <select class="form-select" asp-for="City" asp-items="@Model.Cities"></select>
+                                <label asp-for="City"></label>
+                            </div>
+                            <span class="text-danger" asp-validation-for="City"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-floating">
+                                <select class="form-select" asp-for="Country">
+                                    <option value="Türkiye">Türkiye</option>
+                                </select>
+                                <label asp-for="City"></label>
+                            </div>
+                            <span class="text-danger" asp-validation-for="City"></span>
+                        </div>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" asp-for="IsActive" type="checkbox">
+                        <label class="form-check-label" asp-for="IsActive"></label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" asp-for="IsDeleted" type="checkbox">
+                        <label class="form-check-label" asp-for="IsDeleted"></label>
+                    </div>
+                    <div class="mt-4 mb-0">
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-block">Değişiklikleri Kaydet</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center py-3">
+                <div class="small">
+                    <a asp-area="Admin" asp-controller="Publisher" asp-action="Index">
+                        Tüm Yazarları Listele
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Js{
+    @await Html.PartialAsync("_ValidationScriptsPartial");
+}

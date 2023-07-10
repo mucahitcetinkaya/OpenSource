@@ -1,0 +1,133 @@
+﻿@model BookListViewModel
+<div class="row my-2">
+    <div class="col-md-6">
+        <h1 class="display-6">
+            @(Model.SourceAction == "Index" ? "Kitaplar" : "Silinmiş Kitaplar")
+        </h1>
+    </div>
+    @if (Model.SourceAction == "Index")
+    {
+        <div class="col-md-6 d-flex align-items-center justify-content-end">
+            <a asp-area="Admin"
+           asp-controller="Book"
+           asp-action="Create"
+               class="btn btn-primary">Yeni Kitap</a>
+        </div>
+    }
+</div>
+
+@if (Model.BookViewModelList.Count > 0)
+{
+    <div class="card mb-4">
+        <div class="card-body">
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Resim</th>
+                        <th>Ad</th>
+                        <th>Fiyat</th>
+                        <th>Yayınevi</th>
+                        <th>Yazar</th>
+                        <th>Aktif mi?</th>
+                        <th width="100">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var book in Model.BookViewModelList)
+                    {
+                        <tr>
+                            <td>@book.Id</td>
+                            <td>
+                                <img src="~/images/books/@book.ImageUrl" width="50">
+                            </td>
+                            <td>@book.Name</td>
+                            <td>@($"{book.Price:C0}")</td>
+                            <td>@book.PublisherName</td>
+                            <td>@book.AuthorName</td>
+                            <td>
+                                @if (Model.SourceAction == "Index")
+                                {
+                                    <form class="form-check"
+                              asp-area="Admin"
+                              asp-controller="Book"
+                              asp-action="UpdateIsActive"
+                              asp-route-id="@book.Id"
+                                          id="form-book-is-active-@book.Id">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input"
+                                                   type="checkbox"
+                                                   role="switch"
+                                                   id="flexSwitchCheckChecked" @(book.IsActive ? "checked" : "")
+                                                   onchange="document.getElementById(`form-book-is-active-@book.Id`).submit();">
+                                        </div>
+
+                                    </form>
+                                }
+                                else
+                                {
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input"
+                                               type="checkbox"
+                                               role="switch"
+                                               id="flexSwitchCheckChecked" @(book.IsActive ? "checked" : "") disabled>
+                                    </div>
+                                }
+                            </td>
+                            <td>
+                                <!-- KALICI OLARAK SİLME BUTONU -->
+                                <a class="btn btn-danger btn-sm"
+                           asp-area="Admin"
+                           asp-controller="Book"
+                           asp-action="Delete"
+                           asp-route-id="@book.Id">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                                @if (Model.SourceAction == "Index")
+                                {
+                                    <!-- SOFT SİLME BUTONU -->
+                                    @await Html.PartialAsync("_BookDeletePartial", book)
+
+                                    <!-- GÜNCELLEME BUTONU -->
+                                    <a class="btn btn-info btn-sm"
+                           asp-area="Admin"
+                           asp-controller="Book"
+                           asp-action="Edit"
+                           asp-route-id="@book.Id">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-success btn-sm"
+                                       asp-area="Admin"
+                                       asp-controller="Book"
+                                       asp-action="SoftDelete"
+                                       asp-route-id="@book.Id">
+                                        <i class="fa-solid fa-arrow-rotate-left"></i>
+                                    </a>
+                                }
+
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning" role="alert">
+        Herhangi bir kitap bilgisi yoktur.
+    </div>
+}
+
+@section Css{
+    @await Html.PartialAsync("_DataTablesStylesPartial")
+}
+
+@section Js{
+    @await Html.PartialAsync("_DataTablesScriptsPartial")
+}

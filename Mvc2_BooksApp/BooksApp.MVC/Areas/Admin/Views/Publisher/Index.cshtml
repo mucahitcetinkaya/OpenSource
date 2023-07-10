@@ -1,0 +1,135 @@
+@model PublisherListViewModel
+<div class="row my-2">
+    <div class="col-md-6">
+        <h1 class="display-6">
+            @(Model.SourceAction=="Index" ? "Yayınevleri" : "Silinmiş Yayınevleri")
+        </h1>
+    </div>
+    @if (Model.SourceAction=="Index")
+    {
+        <div class="col-md-6 d-flex align-items-center justify-content-end">
+            <a asp-area="Admin"
+           asp-controller="Publisher"
+           asp-action="Create"
+               class="btn btn-primary">Yeni Yayınevi</a>
+        </div>
+    }
+</div>
+
+@if (Model.PublisherViewModelList.Count>0)
+{
+    <div class="card mb-4">
+        <div class="card-body">
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Ad</th>
+                        <th>Oluşturulma Tarihi</th>
+                        <th>Son Değiştirilme Tarihi</th>
+                        <th>Şehir</th>
+                        <th>Ülke</th>
+                        <th>İletişim</th>
+                        <th>Aktif mi?</th>
+                        <th>İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var publisher in Model.PublisherViewModelList)
+                    {
+                        <tr>
+                            <td>@publisher.Id</td>
+                            <td>@publisher.Name</td>
+                            <td>@publisher.CreatedDate.ToShortDateString()</td>
+                            <td>@publisher.ModifiedDate.ToShortDateString()</td>
+                            <td>@publisher.City</td>
+                            <td>@publisher.Country</td>
+                            <td>@publisher.Phone</td>
+                            <td>
+                                @if (Model.SourceAction=="Index")
+                                {
+                                    <form class="form-check"
+                              asp-area="Admin"
+                              asp-controller="Publisher"
+                              asp-action="UpdateIsActive"
+                              asp-route-id="@publisher.Id"
+                                          id="form-publisher-is-active-@publisher.Id">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input"
+                                                   type="checkbox"
+                                                   role="switch"
+                                                   id="flexSwitchCheckChecked" @(publisher.IsActive ? "checked" : "")
+                                                   onchange="document.getElementById(`form-publisher-is-active-@publisher.Id`).submit();">
+                                        </div>
+
+                                    </form>
+                                }
+                                else
+                                {
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input"
+                                               type="checkbox"
+                                               role="switch"
+                                               id="flexSwitchCheckChecked" @(publisher.IsActive ? "checked" : "" ) disabled>
+                                    </div>
+
+                                
+                                }
+                            </td>
+                            <td>
+                                <!-- KALICI OLARAK SİLME BUTONU -->
+                                <a class="btn btn-danger btn-sm"
+                           asp-area="Admin"
+                           asp-controller="Publisher"
+                           asp-action="Delete"
+                           asp-route-id="@publisher.Id">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+@if (Model.SourceAction=="Index")
+                                {
+                                    
+                                
+                                <!-- SOFT SİLME BUTONU -->
+                        @await Html.PartialAsync("_PublisherDeletePartial",publisher)
+
+                                <!-- GÜNCELLEME BUTONU -->
+                                <a class="btn btn-info btn-sm"
+                           asp-area="Admin"
+                           asp-controller="Publisher"
+                           asp-action="Edit"
+                           asp-route-id="@publisher.Id">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-success btn-sm"
+                                       asp-area="Admin"
+                                       asp-controller="Publisher"
+                                       asp-action="SoftDelete"
+                                       asp-route-id="@publisher.Id">
+                                        <i class="fa-solid fa-arrow-rotate-left"></i>
+                                    </a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning" role="alert">
+        Herhangi bir yayınevi bilgisi yoktur.
+    </div>
+}
+
+@section Css{
+    @await Html.PartialAsync("_DataTablesStylesPartial")
+}
+
+@section Js{
+    @await Html.PartialAsync("_DataTablesScriptsPartial")
+}
