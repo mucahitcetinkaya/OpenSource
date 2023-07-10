@@ -1,0 +1,136 @@
+/* Renk tanımları */
+:root {
+    --white: #FFF;
+    --primary: #007BFF;
+    --secondary: #6C757D;
+    --success: #28A745;
+    --danger: #DC3545;
+    --warning: #FFC107;
+    --info: #17A2B8;
+    --dark: #343A40;
+    --light: #F8F9FA;
+}
+
+/* text color */
+.text-white {
+    color: var(--white)
+}
+
+.text-primary {
+    color: var(--primary)
+}
+
+.text-secondary {
+    color: var(--secondary)
+}
+
+.text-success {
+    color: var(--success)
+}
+
+.text-danger {
+    color: var(--danger)
+}
+
+.text-warning {
+    color: var(--warning)
+}
+
+.text-info {
+    color: var(--info)
+}
+
+.text-dark {
+    color: var(--dark)
+}
+
+.text-light {
+    color: var(--light)
+}
+
+/* bg-color */
+.bg-white {
+    background-color: var(--white)
+}
+
+.bg-primary {
+    background-color: var(--primary)
+}
+
+.bg-secondary {
+    background-color: var(--secondary)
+}
+
+.bg-success {
+    background-color: var(--success)
+}
+
+.bg-danger {
+    background-color: var(--danger)
+}
+
+.bg-warning {
+    background-color: var(--warning)
+}
+
+.bg-info {
+    background-color: var(--info)
+}
+
+.bg-dark {
+    background-color: var(--dark)
+}
+
+.bg-light {
+    background-color: var(--light)
+}
+
+/* buttons */
+.btn {
+    cursor: pointer;
+    display: inline-block;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: .5rem;
+}
+
+.btn:hover {
+    opacity: .9;
+}
+
+.btn-primary {
+    color: var(--white);
+    background-color: var(--primary);
+}
+
+.btn-secondary {
+    color: var(--white);
+    background-color: var(--secondary);
+}
+
+.btn-success {
+    color: var(--white);
+    background-color: var(--success);
+}
+
+.btn-danger {
+    color: var(--white);
+    background-color: var(--danger);
+}
+
+.btn-warning {
+    color: var(--white);
+    background-color: var(--warning);
+}
+
+.btn-dark {
+    color: var(--white);
+    background-color: var(--dark);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--white);
+    color: var(--white);
+}
+
