@@ -1,0 +1,15 @@
+﻿@model TeacherViewModel
+
+<div class="card">
+    <a asp-area="" asp-controller="Lessons" asp-action="TeacherList" asp-route-url="@Model.Url">
+        <img src="~/images/teacher/@Model.PhotoUrl" class="card-img-top" />
+    </a>
+    <div class="card-body pb-0 d-flex flex-column justify-content-between" style="height:140px;">
+        <div> 
+            <h4 class="card-title">@Model.Name</h4>
+        </div>
+        <div class="d-flex justify-content-between">
+            <a asp-area="" asp-controller="Lessons" asp-action="LessonDetails" asp-route-url="@Model.Url" class="btn btn-info btn-sm">İncele</a>
+        </div>
+    </div>
+</div>
