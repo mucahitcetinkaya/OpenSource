@@ -1,7 +1,0 @@
-
-migration
-dotnet ef migrations add LessonWorldDb --startup-project ../LessonWorld.Mvc 
-
-
-update
-dotnet ef database update --startup-project ../LessonWorld.Mvc
