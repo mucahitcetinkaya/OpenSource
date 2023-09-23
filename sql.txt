@@ -1,0 +1,46 @@
+olusturma sırası
+
+dotnet new console
+dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+
+dotnet add package Microsoft.EntityFrameworkCore.Design
+
+dotnet tool install --global dotnet-ef 
+
+dotnet ef dbcontext scaffold "Server=DESKTOP-HOB73IM\SQLEXPRESS;Database=Northwind;User=sa;Password=123;TrustServerCertificate=true" Microsoft.EntityframeworkCore.SqlServer --output-dir EFCore --context _AppDbContext
+
+
+dotnet ef dbcontext scaffold "Server=DESKTOP-HOB73IM\SQLEXPRESS;Database=Northwind;Trusted_Connection=True;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer --output-dir Models
+
+
+//migrations ef nereye yuklendıyse oraya yuklenır biz dataya yukledık onu da oraya yukleyecegız
+//dotnet ef migrations add InitialDb --startup-project ../MiniShopApp.Mvc
+
+//add ten sonra dosya adı startup kısmı baslayan proje ../ bir üst klasöre cık
+	  
+//bunu yüklerken bin obj hatası verdi böyle bir hata alırsan programı kapa bin obj sil tekrar ac
+	  
+//sonra migrations yuklerken entity framework core design hatası verdi mvc de bulamadık diyor gidip onu yukledik
+//nerde isterse koda göre oraya yuklenir
+//tekrar data kısmına gidip migrations yukledik
+//HasNoKey hatası verdi ProductCategory için primary key i yok diyor bunun için ilgili class a gidip
+
+//MiniShopAppCantect.cs
+//orada ilgili clası yukledik
+//sonra tekrar migrations yukledik sorun cıkmadı 
+//sonra mvc kısmına database yükledik
+//dotnet ef database update (tiretire)startup - project.. / MiniShopApp.Mvc
+
+
+optionsBuilder.UseSqlServer("Server=DESKTOP-HOB73IM\\SQLEXPRESS; Database=OtoServisSatisNetCore; Trusted_Connection=true TrustServerCertificate=true;");
+
+optionsBuilder.UseSqlServer(@"Server=DESKTOP-HOB73IM\SQLEXPRESS; Database=OtoServisSatisNetCore; integrated security=true MultipleActiveResultSets=true;");
+
+
+Server=DESKTOP-HOB73IM\SQLEXPRESS;Database=master;Trusted_Connection=True;
+
+
+nuget console üzerinden nortwindth veri tabanına baglanmak için
+Scaffold-DbContext "Server=DESKTOP-HOB73IM\SQLEXPRESS;Database=Northwind;Trusted_Connection=True;TrustServerCertificate=True"  Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -force
