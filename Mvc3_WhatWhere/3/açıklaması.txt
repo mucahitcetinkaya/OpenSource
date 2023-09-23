@@ -1,2 +1,0 @@
-baseentity context config dbcontext mig update yapıldı tek tablo hepsi
-config klasörü olusturuldu context duzeltildi

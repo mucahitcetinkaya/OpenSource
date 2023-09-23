@@ -1,2 +1,0 @@
-controller uzerınden veriyi view de gosteriyor baska bir ozelliği yok
-diger içerikleri guncel entity tablo vs 
