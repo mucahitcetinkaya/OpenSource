@@ -1,0 +1,8 @@
+C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\ItemTemplates\CSharp\Code\1033\Class
+
+
+Bu klasördeki class.cs dosyasını aç
+class $safeitemrootname$ satırını bul
+başına public yaz, yani şu şekilde olsun
+
+public class $safeitemrootname$
